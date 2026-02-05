@@ -1,176 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Valentine</title>
-    <style>
-        :root {
-            --dark-pink: #ff4d6d;
-            --light-pink: #ff85a1;
-            --soft-cream: #fff1f2;
-            --paper: #fefae0;
-        }
-
-        body {
-            margin: 0;
-            background: linear-gradient(135deg, #f8ad9d, #f4978e);
-            font-family: 'Segoe UI', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Floating Hearts Background */
-        .bg-hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Main Window Container */
-        .window {
-            width: 90vw;
-            max-width: 900px;
-            height: 85vh;
-            background: var(--soft-cream);
-            border: 6px solid #333;
-            border-radius: 24px;
-            position: relative;
-            z-index: 10;
-            box-shadow: 20px 20px 0px rgba(0,0,0,0.15);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .screen { display: none; padding: 40px; text-align: center; flex: 1; position: relative; }
-        .active { display: flex; flex-direction: column; align-items: center; justify-content: center; animation: fadeIn 0.4s ease; }
-
-        /* Top Corner Decoration */
-        .calendar-decor {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: white;
-            border: 3px solid #333;
-            padding: 10px;
-            border-radius: 12px;
-            text-align: center;
-            line-height: 1;
-        }
-
-        h1 { font-size: 2.8rem; color: var(--dark-pink); margin: 20px 0; font-weight: 800; }
-        
-        .btn {
-            padding: 15px 35px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-            margin: 10px;
-            box-shadow: 0 4px 0 #333;
-            text-transform: uppercase;
-        }
-        .btn-yes { background: #4cc9f0; color: white; }
-        .btn-no { background: var(--dark-pink); color: white; position: relative; }
-
-        .letter {
-            background: var(--paper);
-            padding: 40px;
-            border: 1px solid #ddd;
-            width: 85%;
-            max-width: 500px;
-            text-align: left;
-            transform: rotate(-1deg);
-            box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
-            font-family: 'Comic Sans MS', cursive;
-        }
-
-        .gift-container { display: flex; gap: 15px; margin-top: 20px; }
-        .gift-card { 
-            background: white; border: 3px solid #333; border-radius: 15px; 
-            padding: 20px; cursor: pointer; transition: 0.3s;
-        }
-        .gift-card:hover { transform: translateY(-10px); background: var(--light-pink); }
-
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Will You Be My Valentine? 💌</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 500px;
+      width: 90%;
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      padding: 40px 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+    h1 {
+      font-size: 2.8rem;
+      color: #e74c3c;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(231,76,60,0.3);
+    }
+    .heart {
+      font-size: 4rem;
+      color: #e74c3c;
+      margin: 20px 0;
+      animation: beat 1.2s infinite;
+    }
+    @keyframes beat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin: 20px 0;
+      color: #444;
+    }
+    .photo-placeholder {
+      width: 180px;
+      height: 180px;
+      background: #ffebee;
+      border-radius: 50%;
+      margin: 30px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #777;
+      border: 4px solid #fff;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 40px 0;
+    }
+    button {
+      font-size: 1.5rem;
+      padding: 18px 0;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    #yesBtn {
+      background: #e74c3c;
+      color: white;
+    }
+    #yesBtn:hover { transform: scale(1.08); background: #c0392b; }
+    #noBtn {
+      background: #95a5a6;
+      color: white;
+    }
+    #noBtn:hover { transform: scale(1.08); background: #7f8c8d; }
+    .message {
+      display: none;
+      margin-top: 40px;
+      padding: 30px;
+      background: #fff0f5;
+      border-radius: 20px;
+      border: 2px dashed #e74c3c;
+    }
+    .confetti {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="bg-hearts">
-        <div style="position:absolute; top:10%; left:5%; font-size: 3rem; opacity: 0.4;">💖</div>
-        <div style="position:absolute; bottom:15%; right:8%; font-size: 4rem; opacity: 0.4;">🎀</div>
-        <div style="position:absolute; top:20%; right:15%; font-size: 2rem; opacity: 0.4;">✨</div>
+  <div class="confetti" id="confetti"></div>
+
+  <div class="container">
+    <div class="heart">💖</div>
+    <h1>Hey love...</h1>
+    
+    <div class="photo-placeholder">Your cute photo here ♡</div>
+    
+    <p>I've been thinking about you a lot lately... and I made this little something just for you.</p>
+    
+    <p style="font-size: 1.5rem; font-weight: bold; color: #c0392b; margin: 30px 0;">
+     Wendy Rose Will you be my Valentine? 💕
+    </p>
+    
+    <div class="buttons">
+      <button id="yesBtn">Yes! Of course 💘</button>
+      <button id="noBtn">No 😔</button>
     </div>
-
-    <div class="window">
-        <div id="s1" class="screen active">
-            <div class="calendar-decor">
-                <div style="font-size: 1rem; color: #555;">FEB</div>
-                <div style="font-size: 2rem; font-weight: bold; color: var(--dark-pink);">14</div>
-            </div>
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnZueXVhbmFwN3p3eXp4eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsJmVwPXYxX3N0aWNrZXJzX3NlYXJjaCZjdD1z/v4aP9DIs8TsnqH1O6E/giphy.gif" width="180">
-            <h1>Wendy Rose,<br>Will you be my Valentine?</h1>
-            <div>
-                <button class="btn btn-yes" onclick="show(2)">YES OF COURSE!</button>
-                <button id="noBtn" class="btn btn-no" onmouseover="dodge()">NO THANK YOU</button>
-            </div>
-        </div>
-
-        <div id="s2" class="screen">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp6eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBps67d9T5Y4XwF/giphy.gif" width="120">
-            <h1>Yay, you said yes!</h1>
-            <p style="font-size: 1.2rem; color: #666;">I made all these for you, babe:</p>
-            <div class="gift-container">
-                <div class="gift-card" onclick="show(3)"><h3>Gift 1</h3>🎁</div>
-                <div class="gift-card" onclick="show(3)"><h3>Gift 2</h3>🎁</div>
-                <div class="gift-card" onclick="show(3)"><h3>Gift 3</h3>🎁</div>
-            </div>
-        </div>
-
-        <div id="s3" class="screen">
-            <div class="letter">
-                <h2 style="color: #d62828; margin-top: 0; text-align: center;">Words from my Heart ❤️</h2>
-                <p>To the love of my life, you make my life so meaningful and I am so lucky to have you. I love you wholeheartedly!</p>
-                <p style="text-align: right; font-weight: bold;">XOXO, Always & Forever</p>
-                <div style="text-align: center; font-size: 2rem;">🧸🎀</div>
-            </div>
-            <button class="btn btn-yes" style="margin-top: 30px;" onclick="show(4)">One last surprise</button>
-        </div>
-
-        <div id="s4" class="screen">
-            <h1>A Song for You 🎵</h1>
-            <div style="background: white; padding: 15px; border: 3px solid #333; border-radius: 12px; margin-bottom: 20px;">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://open.spotify.com/track/748mdHMg0A9P3uO9A7W09I" width="150">
-            </div>
-            <p>Scan to hear how I feel.</p>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/748mdHMg0A9P3uO9A7W09I?utm_source=generator&theme=0" width="80%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <button class="btn" style="margin-top: 20px; background: #333; color: white;" onclick="location.reload()">Restart ❤️</button>
-        </div>
+    
+    <div class="message" id="yesMessage">
+      <h2 style="color:#e74c3c;">Yayyyy! 🎉💖</h2>
+      <p>You just made me the happiest person alive!</p>
+      <p>I promise to fill your days with love, laughs, cuddles, and all the little things that make your heart smile.</p>
+      <p>Can't wait to make more memories with you... my forever Valentine. 🥰</p>
+      <div style="font-size:2.5rem; margin:20px 0;">🥂❤️🌹</div>
     </div>
+    
+    <div class="message" id="noMessage" style="background:#f8d7da; border-color:#c0392b;">
+      <h2 style="color:#c0392b;">Oh no... 😢</h2>
+      <p>Just kidding — you can't say no forever! 😉</p>
+      <p>Try again? The yes button is waiting for you... 💕</p>
+    </div>
+  </div>
 
-    <script>
-        function show(id) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById('s' + id).classList.add('active');
-        }
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const yesMessage = document.getElementById('yesMessage');
+    const noMessage = document.getElementById('noMessage');
 
-        function dodge() {
-            const btn = document.getElementById('noBtn');
-            const windowEl = document.querySelector('.window');
-            const x = Math.random() * (windowEl.clientWidth - btn.clientWidth);
-            const y = Math.random() * (windowEl.clientHeight - btn.clientHeight);
-            btn.style.position = 'absolute';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
-        }
-    </script>
+    yesBtn.addEventListener('click', () => {
+      yesMessage.style.display = 'block';
+      noMessage.style.display = 'none';
+      noBtn.style.display = 'none';
+      yesBtn.style.display = 'none';
+      
+      // Confetti celebration
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff0000', '#ff69b4', '#ffffff', '#ffcc00']
+      });
+    });
+
+    noBtn.addEventListener('click', () => {
+      noMessage.style.display = 'block';
+      // Optional: move yes button or fun effect
+      yesBtn.style.transform = 'scale(1.2)';
+      setTimeout(() => { yesBtn.style.transform = 'scale(1)'; }, 300);
+    });
+  </script>
 </body>
 </html>
