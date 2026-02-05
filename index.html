@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Valentine</title>
+    <title>For My Baby</title>
     <style>
         :root {
             --dark-pink: #ff4d6d;
@@ -23,7 +23,16 @@
             overflow: hidden;
         }
 
-        /* The Dashboard Window */
+        /* Floating Hearts Background */
+        .bg-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Main Window Container */
         .window {
             width: 90vw;
             max-width: 900px;
@@ -32,15 +41,29 @@
             border: 6px solid #333;
             border-radius: 24px;
             position: relative;
+            z-index: 10;
             box-shadow: 20px 20px 0px rgba(0,0,0,0.15);
             display: flex;
             flex-direction: column;
         }
 
-        .screen { display: none; padding: 40px; text-align: center; flex: 1; }
+        .screen { display: none; padding: 40px; text-align: center; flex: 1; position: relative; }
         .active { display: flex; flex-direction: column; align-items: center; justify-content: center; animation: fadeIn 0.4s ease; }
 
-        h1 { font-size: 3rem; color: var(--dark-pink); margin-bottom: 20px; }
+        /* Top Corner Decoration */
+        .calendar-decor {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 3px solid #333;
+            padding: 10px;
+            border-radius: 12px;
+            text-align: center;
+            line-height: 1;
+        }
+
+        h1 { font-size: 2.8rem; color: var(--dark-pink); margin: 20px 0; font-weight: 800; }
         
         .btn {
             padding: 15px 35px;
@@ -52,9 +75,10 @@
             transition: 0.2s;
             margin: 10px;
             box-shadow: 0 4px 0 #333;
+            text-transform: uppercase;
         }
         .btn-yes { background: #4cc9f0; color: white; }
-        .btn-no { background: var(--dark-pink); color: white; position: relative; transition: 0.1s; }
+        .btn-no { background: var(--dark-pink); color: white; position: relative; }
 
         .letter {
             background: var(--paper);
@@ -65,71 +89,88 @@
             text-align: left;
             transform: rotate(-1deg);
             box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-family: 'Comic Sans MS', cursive;
         }
 
-        .qr-code {
-            background: white;
-            padding: 15px;
-            border: 3px solid #333;
-            border-radius: 10px;
-            margin-bottom: 20px;
+        .gift-container { display: flex; gap: 15px; margin-top: 20px; }
+        .gift-card { 
+            background: white; border: 3px solid #333; border-radius: 15px; 
+            padding: 20px; cursor: pointer; transition: 0.3s;
         }
+        .gift-card:hover { transform: translateY(-10px); background: var(--light-pink); }
 
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
 
-<div class="window">
-    <div id="s1" class="screen active">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp6eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v4aP9DIs8TsnqH1O6E/giphy.gif" width="120">
-        <h1>Wendy Rose,<br>Will you be my Valentine?</h1>
-        <div>
-            <button class="btn btn-yes" onclick="show(2)">YES OF COURSE!</button>
-            <button id="noBtn" class="btn btn-no" onmouseover="dodge()">NO THANK YOU</button>
+    <div class="bg-hearts">
+        <div style="position:absolute; top:10%; left:5%; font-size: 3rem; opacity: 0.4;">💖</div>
+        <div style="position:absolute; bottom:15%; right:8%; font-size: 4rem; opacity: 0.4;">🎀</div>
+        <div style="position:absolute; top:20%; right:15%; font-size: 2rem; opacity: 0.4;">✨</div>
+    </div>
+
+    <div class="window">
+        <div id="s1" class="screen active">
+            <div class="calendar-decor">
+                <div style="font-size: 1rem; color: #555;">FEB</div>
+                <div style="font-size: 2rem; font-weight: bold; color: var(--dark-pink);">14</div>
+            </div>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnZueXVhbmFwN3p3eXp4eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsJmVwPXYxX3N0aWNrZXJzX3NlYXJjaCZjdD1z/v4aP9DIs8TsnqH1O6E/giphy.gif" width="180">
+            <h1>Wendy Rose,<br>Will you be my Valentine?</h1>
+            <div>
+                <button class="btn btn-yes" onclick="show(2)">YES OF COURSE!</button>
+                <button id="noBtn" class="btn btn-no" onmouseover="dodge()">NO THANK YOU</button>
+            </div>
+        </div>
+
+        <div id="s2" class="screen">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp6eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsbmZ6eHpsJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBps67d9T5Y4XwF/giphy.gif" width="120">
+            <h1>Yay, you said yes!</h1>
+            <p style="font-size: 1.2rem; color: #666;">I made all these for you, babe:</p>
+            <div class="gift-container">
+                <div class="gift-card" onclick="show(3)"><h3>Gift 1</h3>🎁</div>
+                <div class="gift-card" onclick="show(3)"><h3>Gift 2</h3>🎁</div>
+                <div class="gift-card" onclick="show(3)"><h3>Gift 3</h3>🎁</div>
+            </div>
+        </div>
+
+        <div id="s3" class="screen">
+            <div class="letter">
+                <h2 style="color: #d62828; margin-top: 0; text-align: center;">Words from my Heart ❤️</h2>
+                <p>To the love of my life, you make my life so meaningful and I am so lucky to have you. I love you wholeheartedly!</p>
+                <p style="text-align: right; font-weight: bold;">XOXO, Always & Forever</p>
+                <div style="text-align: center; font-size: 2rem;">🧸🎀</div>
+            </div>
+            <button class="btn btn-yes" style="margin-top: 30px;" onclick="show(4)">One last surprise</button>
+        </div>
+
+        <div id="s4" class="screen">
+            <h1>A Song for You 🎵</h1>
+            <div style="background: white; padding: 15px; border: 3px solid #333; border-radius: 12px; margin-bottom: 20px;">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://open.spotify.com/track/748mdHMg0A9P3uO9A7W09I" width="150">
+            </div>
+            <p>Scan to hear how I feel.</p>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/748mdHMg0A9P3uO9A7W09I?utm_source=generator&theme=0" width="80%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <button class="btn" style="margin-top: 20px; background: #333; color: white;" onclick="location.reload()">Restart ❤️</button>
         </div>
     </div>
 
-    <div id="s2" class="screen">
-        <div class="letter">
-            <h2 style="color: #d62828; margin-top: 0;">Words from my Heart ❤️</h2>
-            <p>To the love of my life, you make my life so meaningful and I am so lucky to have you. I love you wholeheartedly and I can't wait to continue loving you for the rest of my life.</p>
-            <p style="text-align: right; font-weight: bold;">Always, Forever</p>
-        </div>
-        <button class="btn btn-yes" style="margin-top: 30px;" onclick="show(3)">See Your Song</button>
-    </div>
+    <script>
+        function show(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('s' + id).classList.add('active');
+        }
 
-    <div id="s3" class="screen">
-        <h1>A Song for You 🎵</h1>
-        <div class="qr-code">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://open.spotify.com/track/748zQvSjsuzZqbuS3PSZ9s" alt="Song QR Code">
-        </div>
-        <p style="color: #555; margin-bottom: 20px;">Scan the code or listen below:</p>
-        
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/748zQvSjsuzZqbuS3PSZ9s?utm_source=generator&theme=0" width="80%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        
-        <button class="btn" style="margin-top: 20px; background: #333; color: white;" onclick="location.reload()">Click to Restart</button>
-    </div>
-</div>
-
-<script>
-    function show(id) {
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('s' + id).classList.add('active');
-    }
-
-    function dodge() {
-        const btn = document.getElementById('noBtn');
-        // Keeps the button within the "window" container
-        const x = Math.random() * 70;
-        const y = Math.random() * 70;
-        btn.style.position = 'absolute';
-        btn.style.left = x + '%';
-        btn.style.top = y + '%';
-    }
-</script>
-
+        function dodge() {
+            const btn = document.getElementById('noBtn');
+            const windowEl = document.querySelector('.window');
+            const x = Math.random() * (windowEl.clientWidth - btn.clientWidth);
+            const y = Math.random() * (windowEl.clientHeight - btn.clientHeight);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+    </script>
 </body>
 </html>
