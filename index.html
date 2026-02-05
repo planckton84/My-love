@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Valentine</title>
+    <style>
+        :root {
+            --dark-pink: #ff4d6d;
+            --light-pink: #ff85a1;
+            --paper-yellow: #fefae0;
+        }
+
+        body {
+            margin: 0;
+            background-color: #f8ad9d;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* The Browser Window Container from the Video */
+        .window {
+            width: 95vw;
+            max-width: 1000px;
+            height: 80vh;
+            background: white;
+            border: 4px solid #333;
+            border-radius: 20px;
+            position: relative;
+            overflow-y: auto;
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.1);
+        }
+
+        .screen { display: none; padding: 40px; text-align: center; height: 100%; }
+        .active { display: flex; flex-direction: column; align-items: center; justify-content: center; animation: fadeIn 0.5s; }
+
+        /* Step 1: The Question */
+        .calendar-icon { position: absolute; top: 20px; right: 20px; background: white; border: 2px solid #333; padding: 10px; border-radius: 10px; }
+        
+        /* Step 2: Gifts */
+        .gift-grid { display: flex; gap: 20px; margin-top: 30px; }
+        .gift-box { padding: 20px; border: 3px solid var(--dark-pink); border-radius: 15px; cursor: pointer; transition: 0.3s; }
+        .gift-box:hover { transform: scale(1.1); background: var(--light-pink); }
+
+        /* Step 3: Letter Section */
+        .letter { background: var(--paper-yellow); padding: 30px; border: 1px solid #ddd; width: 80%; text-align: left; box-shadow: 5px 5px 15px rgba(0,0,0,0.05); }
+
+        .btn {
+            background: var(--dark-pink);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="window">
+    <div id="s1" class="screen active">
+        <div class="calendar-icon">📅 14 FEB</div>
+        <h1>Wendy Rose, Will you be my Valentine?</h1>
+        <div>
+            <button class="btn" onclick="show(2)">YES OF COURSE</button>
+            <button class="btn" style="background:#888" id="noBtn" onmouseover="move()">NO THANK YOU</button>
+        </div>
+    </div>
+
+    <div id="s2" class="screen">
+        <h1>Yay, you said yes!</h1>
+        <p>Pick a gift for being the best:</p>
+        <div class="gift-grid">
+            <div class="gift-box" onclick="show(3)">🎁 Gift 1</div>
+            <div class="gift-box" onclick="show(3)">🎁 Gift 2</div>
+            <div class="gift-box" onclick="show(3)">🎁 Gift 3</div>
+        </div>
+    </div>
+
+    <div id="s3" class="screen">
+        <div class="letter">
+            <h2>To the love of my life...</h2>
+            <p>You make my life so meaningful. I am so lucky to have you. I love you wholeheartedly!</p>
+            <p style="text-align: right;">- Always, Forever ❤️</p>
+        </div>
+        <button class="btn" style="margin-top:20px" onclick="show(4)">Next Surprise</button>
+    </div>
+
+    <div id="s4" class="screen">
+        <h1>A Song for you</h1>
+        <div style="background: #eee; width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; border: 2px dashed #333;">
+            [Insert QR Code or Spotify Link]
+        </div>
+        <p>Scan to hear how I feel!</p>
+    </div>
+</div>
+
+<script>
+    function show(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('s' + id).classList.add('active');
+    }
+
+    function move() {
+        const btn = document.getElementById('noBtn');
+        btn.style.position = 'absolute';
+        btn.style.left = Math.random() * 80 + '%';
+        btn.style.top = Math.random() * 80 + '%';
+    }
+</script>
+
+</body>
+</html>
