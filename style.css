@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #0f0f0f;
+    color: #fff;
+}
+
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: fixed;
+    width: 100%;
+    background: rgba(15,15,15,0.8);
+    backdrop-filter: blur(10px);
+}
+
+.navbar nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: white;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #7b5cff, #00d4ff);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+/* HERO */
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+}
+
+.hero-text {
+    max-width: 500px;
+}
+
+.hero h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.hero-visual {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle at center, #7b5cff, transparent);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* FEATURES */
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 100px 60px;
+}
+
+.card {
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform .3s, background .3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background: #222;
+}
+
+/* ABOUT */
+
+.about {
+    padding: 120px 80px;
+    text-align: center;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #777;
+}
