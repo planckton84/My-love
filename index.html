@@ -145,16 +145,25 @@
             <button class="btn btn-yes" style="margin-top: 30px;" onclick="show(4)">One last surprise</button>
         </div>
 
-        <div id="s4" class="screen">
+    <div id="s4" class="screen">
             <h1>A Song for You 🎵</h1>
-            <div style="background: white; padding: 15px; border: 3px solid #333; border-radius: 12px; margin-bottom: 20px;">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://open.spotify.com/track/748mdHMg0A9P3uO9A7W09I" width="150">
+            
+            <div style="width: 80%; max-width: 560px; border: 3px solid #333; border-radius: 12px; overflow: hidden; box-shadow: 10px 10px 0px rgba(0,0,0,0.1);">
+                <iframe 
+                    width="100%" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/0EVVKs6DQLo?autoplay=1" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
-            <p>Scan to hear how I feel.</p>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/748mdHMg0A9P3uO9A7W09I?utm_source=generator&theme=0" width="80%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+            <p style="margin-top: 20px; color: #555; font-weight: bold;">"Kiss Me More" - Doja Cat ft. SZA</p>
+            
             <button class="btn" style="margin-top: 20px; background: #333; color: white;" onclick="location.reload()">Restart ❤️</button>
         </div>
-    </div>
 
     <script>
         function show(id) {
